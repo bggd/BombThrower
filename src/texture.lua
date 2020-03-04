@@ -10,20 +10,20 @@ function texture.create(image_buffer)
     width = w,
     height = h
   }
-  local texture = {
+  local obj = {
     tex = les8.texture.create(texture_decl),
     width = w,
     height = h
   }
-  return texture
+  return obj
 end
 
-function texture.destroy(texture)
-  assert(texture.tex)
-  assert(texture.width > 0)
-  assert(texture.height > 0)
-  les8.texture.destroy(texture.tex)
-  texture.tex = nil
-  texture.width = 0
-  texture.height = 0
+function texture.destroy(tex)
+  assert(tex.tex)
+  assert(tex.width > 0)
+  assert(tex.height > 0)
+  les8.texture.destroy(tex.tex)
+  tex.tex = nil
+  tex.width = 0
+  tex.height = 0
 end
