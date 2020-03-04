@@ -27,3 +27,5 @@ function texture.destroy(tex)
   tex.width = 0
   tex.height = 0
 end
+
+return texture
