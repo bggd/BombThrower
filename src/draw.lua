@@ -13,10 +13,10 @@ function draw.set_texture(texture)
     draw.flush()
   end
   current_texture = texture
-  src_x1 = 0
-  src_y1 = 0
-  src_x2 = texture.width
-  src_y2 = texture.height
+  src_x1 = 0.0
+  src_y1 = 0.0
+  src_x2 = 1.0
+  src_y2 = 1.0
   les8.gfx.set_texture(current_texture.tex)
 end
 
@@ -29,11 +29,11 @@ end
 
 function draw.rect(x1, y1, x2, y2)
   for _, i in ipairs({x1, y1, src_x1, src_y2,
-                   x1, y2, src_x1, src_y1,
-                   x2, y2, src_x2, src_y1,
-                   x2, y2, src_x2, src_y1,
-                   x2, y1, src_x2, src_y2,
-                   x1, y1, src_x1, src_y2}) do
+                      x1, y2, src_x1, src_y1,
+                      x2, y2, src_x2, src_y1,
+                      x2, y2, src_x2, src_y1,
+                      x2, y1, src_x2, src_y2,
+                      x1, y1, src_x1, src_y2}) do
     vertex_buffer[num_vertex + 1] = i
     num_vertex = num_vertex + 1
   end
