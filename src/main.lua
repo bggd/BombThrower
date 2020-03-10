@@ -4,6 +4,7 @@ local mat4 = require("les8.mat4")
 
 local init_shader = require("src.init_shader")
 local preload_images = require("src.preload_images")
+local handle_input = require("src.handle_input")
 local draw = require("src.draw")
 
 les8.init()
@@ -19,9 +20,9 @@ draw.set_texture(IMAGE.PLAYER_RUN_00)
 
 les8.run(function()
 
-  scancodes = sdl2.GetKeyboardState()
-  if scancodes[sdl2.SCANCODE.ESCAPE] then
-    print("exit")
+  local input = handle_input()
+  if input.is_released.LEFT_ARROW then
+    print("LEFT_ARROW released!")
   end
 
   les8.gfx.clear(0.0, 0.0, 0.0, 1.0)
