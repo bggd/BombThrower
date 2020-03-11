@@ -1,27 +1,16 @@
 local les8 = require("les8")
-local sdl2 = require("les8.sdl2")
-local mat4 = require("les8.mat4")
 
-local init_shader = require("src.init_shader")
-local preload_images = require("src.preload_images")
-local handle_input = require("src.handle_input")
 local draw = require("src.draw")
+require("src.game")
 
-les8.init()
-
-preload_images()
-
-local shader = init_shader()
-
-les8.gfx.set_shader(shader)
-les8.gfx.set_projection_matrix(mat4.ortho(0.0, 640.0, 480.0, 0.0, -1.0, 1.0))
+g_game.init()
 
 draw.set_texture(IMAGE.PLAYER_RUN_00)
 
 les8.run(function()
 
-  local input = handle_input()
-  if input.is_released.LEFT_ARROW then
+  g_game.update_input()
+  if g_game.input.is_released.LEFT_ARROW then
     print("LEFT_ARROW released!")
   end
 
@@ -31,4 +20,4 @@ les8.run(function()
   les8.gfx.present()
 end)
 
-les8.shader.destroy(shader)
+g_game.deinit()
