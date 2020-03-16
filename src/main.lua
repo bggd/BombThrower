@@ -14,6 +14,8 @@ les8.run(function()
     print("LEFT_ARROW released!")
   end
 
+  g_game.update()
+
   les8.gfx.clear(0.0, 0.0, 0.0, 1.0)
   draw.rect(0, 0, 64, 64)
   draw.flush()
