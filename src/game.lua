@@ -1,5 +1,6 @@
 local les8 = require("les8")
-local mat4 = require("les8.mat4")
+local gfx = require("les8.gfx")
+local mat4 = require("les8.gmath").mat4
 
 local init_shader = require("src.init_shader")
 local preload_images = require("src.preload_images")
@@ -11,6 +12,8 @@ g_game = {}
 g_game.shader = nil
 g_game.input = nil
 
+g_game.entities = {}
+
 g_game.on_update = nil
 
 
@@ -21,15 +24,15 @@ function g_game.init()
 
   g_game.shader = init_shader()
 
-  les8.gfx.set_shader(g_game.shader)
-  les8.gfx.set_projection_matrix(mat4.ortho(0.0, 640.0, 480.0, 0.0, -1.0, 1.0))
+  gfx.set_shader(g_game.shader)
+  gfx.set_projection_matrix(mat4.ortho(0.0, 640.0, 480.0, 0.0, -1.0, 1.0))
 
   g_game.set_update(game_loop.title)
 
 end
 
 function g_game.deinit()
-  les8.shader.destroy(g_game.shader)
+  gfx.shader.destroy(g_game.shader)
 end
 
 function g_game.update_input()

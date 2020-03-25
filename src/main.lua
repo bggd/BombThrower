@@ -1,11 +1,13 @@
 local les8 = require("les8")
+local gfx = require("les8.gfx")
 
 local draw = require("src.draw")
+local entity = require("src.entity")
 require("src.game")
 
 g_game.init()
 
-draw.set_texture(IMAGE.PLAYER_RUN_00)
+local go = entity.player.spawn()
 
 les8.run(function()
 
@@ -16,10 +18,12 @@ les8.run(function()
 
   g_game.update()
 
-  les8.gfx.clear(0.0, 0.0, 0.0, 1.0)
-  draw.rect(0, 0, 64, 64)
+  go.on_update(go)
+
+  gfx.clear(32.0 / 256.0, 64.0 / 256.0, 128.0 / 256.0, 1.0)
+  go.on_draw(go)
   draw.flush()
-  les8.gfx.present()
+  gfx.present()
 end)
 
 g_game.deinit()

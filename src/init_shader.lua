@@ -1,4 +1,4 @@
-local les8 = require("les8")
+local gfx = require("les8.gfx")
 
 local shader_decl = {
   input_layout = {
@@ -27,7 +27,7 @@ local function init_shader()
   shader_decl.pixel_shader = file:read("*a")
   io.close(file)
 
-  local shader = les8.shader.create(shader_decl)
+  local shader = gfx.shader.create(shader_decl)
   assert(shader)
 
   return shader

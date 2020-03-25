@@ -1,4 +1,4 @@
-local les8 = require("les8")
+local gfx = require("les8.gfx")
 local stbi_load_from_memory = require("les8.thirdparty").stbi_load_from_memory
 
 local texture = {}
@@ -11,7 +11,7 @@ function texture.create(image_buffer)
     height = h
   }
   local obj = {
-    tex = les8.texture.create(texture_decl),
+    tex = gfx.texture.create(texture_decl),
     width = w,
     height = h
   }
@@ -22,7 +22,7 @@ function texture.destroy(tex)
   assert(tex.tex)
   assert(tex.width > 0)
   assert(tex.height > 0)
-  les8.texture.destroy(tex.tex)
+  gfx.texture.destroy(tex.tex)
   tex.tex = nil
   tex.width = 0
   tex.height = 0

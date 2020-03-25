@@ -1,4 +1,4 @@
-local les8 = require("les8")
+local gfx = require("les8.gfx")
 
 local draw = {}
 
@@ -17,7 +17,7 @@ function draw.set_texture(texture)
   src_y1 = 0.0
   src_x2 = 1.0
   src_y2 = 1.0
-  les8.gfx.set_texture(current_texture.tex)
+  gfx.set_texture(current_texture.tex)
 end
 
 function draw.set_source_rect(x1, y1, x2, y2)
@@ -41,7 +41,7 @@ end
 
 function draw.flush()
   if num_vertex > 0 then
-    les8.gfx.draw_triangles(vertex_buffer)
+    gfx.draw_triangles(vertex_buffer)
   end
   num_vertex = 0
 end
