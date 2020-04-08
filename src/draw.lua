@@ -14,9 +14,9 @@ function draw.set_texture(texture)
   end
   current_texture = texture
   src_x1 = 0.0
-  src_y1 = 0.0
+  src_y1 = 1.0
   src_x2 = 1.0
-  src_y2 = 1.0
+  src_y2 = 0.0
   gfx.set_texture(current_texture.tex)
 end
 
@@ -28,7 +28,7 @@ function draw.set_source_rect(x1, y1, x2, y2)
 end
 
 function draw.rect(x1, y1, x2, y2)
-  for _, i in ipairs({x1, y1, src_x1, src_y2,
+  for k, i in ipairs({x1, y1, src_x1, src_y2,
                       x1, y2, src_x1, src_y1,
                       x2, y2, src_x2, src_y1,
                       x2, y2, src_x2, src_y1,
@@ -42,6 +42,7 @@ end
 function draw.flush()
   if num_vertex > 0 then
     gfx.draw_triangles(vertex_buffer)
+    for k, v in pairs(vertex_buffer) do vertex_buffer[k] = nil end
   end
   num_vertex = 0
 end
